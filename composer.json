@@ -1,0 +1,12 @@
+{
+    "name": "acer/laragon",
+    "description": "aisbro",
+    "require": {
+        "laravel/framework": "^11.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
