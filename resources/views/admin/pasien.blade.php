@@ -344,7 +344,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Daftar Mahasiswa</h1>
+      <h1>Daftar Dokter Spesialis</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -360,7 +360,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
+              <h5 class="card-title">Daftar Dokter</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
 
               <!-- Table with stripped rows -->
@@ -370,26 +370,54 @@
                     <th>
                       <b>ID</b>
                     </th>
-                    <th style="text-align: center;">Nama Mahasiswa</th>
-                    <th style="text-align: center;">ID Spesialis</th>
-                    <th style="text-align: center;">Status</th>
-                    <th style="text-align: center;">Jumlah Konsultasi</th>
-                    <th style="text-align: center;">Action</th>
-                    >
+                    <th>NIK</th>
+                    <th>Nama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Alamat</th>
+                    <th>No Telp</th>
+                    <th>TB</th>
+                    <th>BB</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Unity Pugh</td>
-                    <td>9958</td>
+                    <td>34235436</td>
+                    <td>Aisya</td>
                     <td>Curicó</td>
                     <td>2005/02/11</td>
                     <td>37%</td>
+                    <td>37%</td>
+                    <td>37%</td>
+                    <td>37%</td>
+                    <td>37%</td>
                     <td>
-                        
-
-
-                        </<td>
+                               
+                        <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+                          <div class="icon"><i class="ri-add-circle-fill"></i></div>
+                      </button>
+                   
+                            <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title">Disabled Backdrop</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </div>
+                              </div> 
+                            </td></td>
+                        </tr>
+                        <tr>
                   </tr>
                   <tr>
                     <td>Theodore Duran</td>

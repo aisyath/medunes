@@ -344,7 +344,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Daftar Mahasiswa</h1>
+      <h1>Log Activity</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -368,13 +368,13 @@
                 <thead>
                   <tr>
                     <th>
-                      <b>ID</b>
+                      <b>Dokter</b>
                     </th>
-                    <th style="text-align: center;">Nama Mahasiswa</th>
-                    <th style="text-align: center;">ID Spesialis</th>
-                    <th style="text-align: center;">Status</th>
-                    <th style="text-align: center;">Jumlah Konsultasi</th>
-                    <th style="text-align: center;">Action</th>
+                    <th>Pasien</th>
+                    <th>Jenis Aktivitas</th>
+                    
+                    <th data-type="date" data-format="YYYY/DD/MM">Tanggal</th>
+                    <th>Deskripsi</th>
                     >
                   </tr>
                 </thead>
@@ -385,11 +385,6 @@
                     <td>Curicó</td>
                     <td>2005/02/11</td>
                     <td>37%</td>
-                    <td>
-                        
-
-
-                        </<td>
                   </tr>
                   <tr>
                     <td>Theodore Duran</td>
