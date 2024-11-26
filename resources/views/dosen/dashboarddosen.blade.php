@@ -271,63 +271,7 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link " href="dashboardosen">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="mahasiswad">
-          <i class="bi bi-person"></i>
-          <span>Mahasiswa</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="spesialisd">
-          <i class="bi bi-person"></i>
-          <span>Spesialis</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="penjadwalan">
-          <i class="bi bi-question-circle"></i>
-          <span>Penjadwalan</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dokterspesialis">
-          <i class="bi bi-envelope"></i>
-          <span>Penilaian</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dosen">
-          <i class="bi bi-card-list"></i>
-          <span>Log Konsultasi</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Logout</span>
-        </a>
-      </li><!-- End Login Page Nav -->
-
-   
-
-  </aside><!-- End Sidebar-->
+  @extends('layouts.sidebardosen')
 
   @yield('content')
   <main id="main" class="main">

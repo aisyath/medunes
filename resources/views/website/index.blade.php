@@ -12,12 +12,14 @@
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+    <!-- Main CSS File -->
+    <link href="D:\laragon\www\laraadminpanel\resources\views\website\main.css" rel="stylesheet">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  @yield('styles')
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -26,8 +28,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="D:\laragon\www\laraadminpanel\resources\views\website\main.css" rel="stylesheet">
+
 
   <!-- =======================================================
   * Template Name: Medilab
@@ -114,7 +115,7 @@
 
         <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
           <h2>WELCOME TO MEDUNNES</h2>
-          <p>We are team of talented designers making websites with Bootstrap</p>
+          <p>solusi kesehatan digital yang dekat, praktis, dan terpercaya!</p>
         </div><!-- End Welcome -->
 
         <div class="content row gy-4">
@@ -122,9 +123,7 @@
             <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
               <h3>Why Choose Medunnes?</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-              </p>
+                MedUNNES adalah platform layanan kesehatan digital yang dirancang untuk memberikan akses kesehatan yang mudah, cepat, dan terpercaya. Dengan tenaga kesehatan yang terdiri dari mahasiswa koas Universitas Negeri Semarang (UNNES), kami menggabungkan semangat belajar dengan dedikasi untuk membantu masyarakat.</p>
               <div class="text-center">
                 <a href="#about" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
               </div>
@@ -138,24 +137,24 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box" data-aos="zoom-out" data-aos-delay="300">
                     <i class="bi bi-clipboard-data"></i>
-                    <h4>Corporis voluptates officia eiusmod</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                    <h4>Tenaga Kesehatan Kompeten</h4>
+                    <p>Mahasiswa koas UNNES memiliki pengetahuan terkini dan berada di bawah bimbingan dokter profesional untuk memastikan layanan kesehatan yang berkualitas.</p>
                   </div>
                 </div><!-- End Icon Box -->
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box" data-aos="zoom-out" data-aos-delay="400">
                     <i class="bi bi-gem"></i>
-                    <h4>Ullamco laboris ladore pan</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                    <h4>Akses Kesehatan Mudah dan Cepat</h4>
+                    <p>Konsultasi kesehatan dapat dilakukan kapan saja melalui aplikasi kami, menghemat waktu tanpa mengurangi kualitas layanan.</p>
                   </div>
                 </div><!-- End Icon Box -->
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box" data-aos="zoom-out" data-aos-delay="500">
                     <i class="bi bi-inboxes"></i>
-                    <h4>Labore consequatur incidid dolore</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                    <h4>Harga Terjangkau</h4>
+                    <p>Kami menyediakan layanan kesehatan berkualitas dengan biaya yang ramah di kantong, menjadikan kesehatan dapat diakses oleh semua kalangan.</p>
                   </div>
                 </div><!-- End Icon Box -->
 
@@ -183,28 +182,32 @@
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <h3>About Us</h3>
             <p>
-              Dolor iure expedita id fuga asperiores qui sunt consequatur minima. Quidem voluptas deleniti. Sit quia molestiae quia quas qui magnam itaque veritatis dolores. Corrupti totam ut eius incidunt reiciendis veritatis asperiores placeat.
+              MedUNNES adalah inisiatif kesehatan berbasis digital dari mahasiswa koas Universitas Negeri Semarang (UNNES) yang bertujuan menyediakan layanan kesehatan terpercaya dan mudah diakses. Kami percaya bahwa dengan kolaborasi, inovasi, dan empati, kami dapat menjadi solusi kesehatan yang lebih baik bagi masyarakat.
             </p>
             <ul>
               <li>
                 <i class="fa-solid fa-vial-circle-check"></i>
                 <div>
-                  <h5>Ullamco laboris nisi ut aliquip consequat</h5>
-                  <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
+                  <h5>Kolaborasi Profesionalt</h5>
+                  <p>Berkolaborasi dengan dokter senior untuk memastikan kualitas layanan kesehatan.</p>
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-pump-medical"></i>
                 <div>
-                  <h5>Magnam soluta odio exercitationem reprehenderi</h5>
-                  <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
+                  <h5>Inovasi Digital</h5>
+                  <p>Menggunakan teknologi terkini untuk mempermudah akses kesehatan kapan saja dan di mana saja.
+
+                  </p>
                 </div>
               </li>
               <li>
                 <i class="fa-solid fa-heart-circle-xmark"></i>
                 <div>
-                  <h5>Voluptatem et qui exercitationem</h5>
-                  <p>Et velit et eos maiores est tempora et quos dolorem autem tempora incidunt maxime veniam</p>
+                  <h5>Empati dalam Pelayanan</h5>
+                  <p>Memberikan pelayanan kesehatan yang ramah, mendukung, dan sesuai kebutuhan individu.
+
+                  </p>
                 </div>
               </li>
             </ul>
@@ -267,7 +270,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>MedUNNES menyediakan berbagai layanan kesehatan untuk memenuhi kebutuhan Anda</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -280,9 +283,9 @@
                 <i class="fas fa-heartbeat"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Nesciunt Mete</h3>
+                <h3>Konsultasi Online dengan Mahasiswa Koas</h3>
               </a>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <p>Diskusikan keluhan kesehatan Anda secara langsung dengan mahasiswa koas melalui platform kami, di bawah supervisi dokter.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -292,9 +295,9 @@
                 <i class="fas fa-pills"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Eosle Commodi</h3>
+                <h3>Rekomendasi Pengobatan Awal</h3>
               </a>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
+              <p>Dapatkan saran pengobatan awal untuk membantu menangani gejala ringan hingga Anda dapat bertemu dokter langsung jika diperlukan.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -304,9 +307,9 @@
                 <i class="fas fa-hospital-user"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Ledo Markt</h3>
+                <h3>Reservasi Pemeriksaan di Klinik</h3>
               </a>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
+              <p>Mudah mengatur jadwal pemeriksaan di klinik mitra kami.</p>
             </div>
           </div><!-- End Service Item -->
 
@@ -316,9 +319,9 @@
                 <i class="fas fa-dna"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Asperiores Commodit</h3>
+                <h3>Pemantauan Kesehatan Berkala</h3>
               </a>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
+              <p>Cek perkembangan kondisi kesehatan Anda secara berkala dengan layanan monitoring kami.</p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -329,9 +332,9 @@
                 <i class="fas fa-wheelchair"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Velit Doloremque</h3>
+                <h3>Edukasi dan Tips Kesehatan</h3>
               </a>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
+              <p>Akses artikel kesehatan, panduan, dan informasi bermanfaat yang disusun oleh mahasiswa koas dan tenaga ahli.</p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -342,9 +345,9 @@
                 <i class="fas fa-notes-medical"></i>
               </div>
               <a href="#" class="stretched-link">
-                <h3>Dolori Architecto</h3>
+                <h3>Pengingat Obat dan Jadwal Kontrol</h3>
               </a>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
+              <p>Atur pengingat untuk minum obat dan jadwal kontrol medis Anda, agar tidak terlewatkan.</p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div><!-- End Service Item -->
@@ -1078,7 +1081,6 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  @yield('script')
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>

@@ -45,6 +45,9 @@ Route::get('/dosen', function () {
 Route::get('/penjadwalan', function () {
     return view('dosen.penjadwalan'); // dosen
 });
+Route::get('/logkonsultasi', function () {
+    return view('dosen.logkonsultasi'); // dosen
+});
 
 Route::get('/jumlah-pemeriksaan', function () {
     return view('admin.jumlah_pemeriksaan'); // Jumlah pemeriksaan
@@ -82,4 +85,7 @@ Route::get('/profile', function () {
 
 Route::get('/index', function () {
     return view('website.index'); // webiste
+});
+Route::get('/starter', function () {
+    return view('website.starter-page'); // webiste
 });
