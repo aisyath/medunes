@@ -2,7 +2,10 @@
     "name": "acer/laragon",
     "description": "aisbro",
     "require": {
-        "laravel/framework": "^11.3"
+        "laravel/framework": "^11.3",
+        "spatie/laravel-activitylog": "^4.9",
+        "laravel/sanctum": "^4.0",
+        "spatie/laravel-permission": "^6.10"
     },
     "autoload": {
         "psr-4": {

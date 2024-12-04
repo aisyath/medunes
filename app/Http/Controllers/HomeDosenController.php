@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use index;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\Konsultasi;
 use App\Models\Role;
-use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeDosenController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,7 +25,7 @@ class HomeController extends Controller
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
-     */
+     */  
     public function index()
     {
         $dokters = Dokter::count();
@@ -38,6 +37,6 @@ class HomeController extends Controller
         $konsultasitoday = Konsultasi::whereDate('created_at', $tanggalHariIni)->count();
 
 
-        return view('admin.dashboardadmin', compact('dokters', 'pasiens', 'konsultasis', 'konsultasitoday'));
+        return view('dosen.dashboarddosen', compact('dokters', 'pasiens', 'konsultasis', 'konsultasitoday'));
     }
 }
