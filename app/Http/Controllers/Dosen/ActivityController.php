@@ -14,8 +14,12 @@ class ActivityController extends Controller
 {
     public function showActivityLog()
     {
+        $logs = Activity::with([
+            'dokter.user',
+            'pasien.user',
+            'user'
+        ])->orderBy('created_at', 'desc')->get();
         
-        $logs = Activity::with(['dokter', 'pasien', 'user'])->orderBy('created_at', 'desc')->get();
         return view('dosen.logkonsultasi', compact('logs'));
     }
 

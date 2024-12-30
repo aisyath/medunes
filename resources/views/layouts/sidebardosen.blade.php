@@ -12,27 +12,27 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="mahasiswa">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-hospital"></i>
           <span>Dokter</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="spesialis">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-clipboard2-pulse"></i>
           <span>Spesialis</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="penjadwalan">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-calendar-check"></i>
           <span>Penjadwalan</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="logkonsultasi">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-journal-text"></i>
           <span>Log Konsultasi</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->

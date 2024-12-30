@@ -18,35 +18,35 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="konsultasipasien">
-          <i class="bi bi-person"></i>
+          <i class="bi bi-chat-dots"></i>
           <span>Konsultasi Pasien</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="dokter">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-hospital"></i>
           <span>Dokter</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="dokterspesialis">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-clipboard2-pulse"></i>
           <span>Spesialisasi</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="dosen">
-          <i class="bi bi-card-list"></i>
+          <i class="bi bi-person-workspace"></i>
           <span>Dosen</span>
         </a>
       </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="akun">
-          <i class="bi bi-box-arrow-in-right"></i>
+          <i class="bi bi-person-gear"></i>
           <span>Akun</span>
         </a>
       </li><!-- End Login Page Nav -->
