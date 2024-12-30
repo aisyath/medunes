@@ -18,6 +18,11 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    @if (session('success'))
+    <div class="alert alert-warning" role="alert">
+        {{ session('success') }}
+    </div>
+  @endif
 
     <section class="section">
       <div class="row">
@@ -26,8 +31,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Daftar Konsultasi</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
-
+              
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -55,27 +59,32 @@
                     <td>{{ $konsultasi->created_at }}</td>
                    
                     <td>
-                               
-                        <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
-                          <div class="icon"><i class="ri-delete-bin-2-fill"></i></div>
-                      </button>
-                   
-                            <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title">Disabled Backdrop</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                  </div>
-                                </div>
-                              </div> 
+                    <a href="#delete{{ $konsultasi->id_konsultasi }}" class="btn btn-danger btn-sm" data-bs-toggle="modal">
+                      <i class="bi bi-trash-fill"></i>
+                    </a>
+                      <!-- Modal -->
+                    <div class="modal fade" id="delete{{ $konsultasi->id_konsultasi}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="hapusKonsultasiLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="hapusKonsultasiLabel">Hapus Poli</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Apakah anda yakin ingin menghapus spesialis ini?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <form action="{{ route('konsultasi.destroy', $konsultasi->id_konsultasi) }}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger">Hapus</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div> 
                             </td></td>
                         </tr>
                         <tr>

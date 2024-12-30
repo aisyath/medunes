@@ -35,28 +35,32 @@ class SpesialisController extends Controller
         return view('backendadmin.dokter.create_dokter');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //upload image
-        $image = $request->file('img_spesialis');
-        $path = 'asset/' . $image->getClientOriginalName();
-        Storage::disk('public')->put($path, file_get_contents($image));
-
-        //create post
-        Spesialis::create([
-            'nama_spesialis' => $request->nama_spesialis,
-            'img_spesialis'     => $path
+        $request->validate([
+            'nama_spesialis' => 'required|string|max:255',
+            'img_spesialis' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
-        //redirect to index
-        return redirect()->route('spesialis.index')->with(['success' => 'Spesialis Berhasil Ditambahkan!']);
-
+    
+        $spesialis = new Spesialis();
+        $spesialis->nama_spesialis = $request->nama_spesialis;
+    
+        if ($request->hasFile('img_spesialis')) {
+            $image = $request->file('img_spesialis');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/spesialis'), $imageName);
+            $spesialis->img_spesialis = $imageName;
+        }
+    
+        $spesialis->save();
+    
+        return redirect()->back()->with('success', 'Spesialis berhasil ditambahkan');
     }
 
     public function destroy(int $id)
     {
         Spesialis::destroy($id);
-        return redirect('/list_spesialis')->with('message_delete', 'Spesialis berhasil dihapus!');
+        return redirect('/dokterspesialis')->with('success', 'Spesialis berhasil dihapus!');
     }
 
     // // create spesialis

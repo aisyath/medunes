@@ -4,87 +4,76 @@
 
 
  
-
+@extends('layouts.header')
   @extends('layouts.sidebardosen')
 
   <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Daftar Dokter Spesialis</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
+<div class="pagetitle">
+  <h1>Daftar Dokter Spesialis</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item">Tables</li>
+      <li class="breadcrumb-item active">Data</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+@if (session('success'))
+    <div class="alert alert-warning" role="alert">
+        {{ session('success') }}
+    </div>
+  @endif
 
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Daftar Dokter</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
-
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th>
-                      <b>ID</b>
-                    </th>
-                    <th>Nama Spesialis</th>
-                    <th>Action</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                @foreach ($spesialis as $spesialis)
-                  <tr>
-                    <td>{{ $spesialis->id_spesialis }}</td>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Daftar Dokter Spesialis</h5>
+          
+          <!-- Table with stripped rows -->
+          <table class="table datatable">
+            <thead class="table-info">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nama spesialis</th>
+                <th scope="col">Img spesialis</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach ($spesialis as $spesialis)
+                <tr>
+                    <th scope="row">{{ $spesialis->id_spesialis }}</th>
                     <td>{{ $spesialis->nama_spesialis }}</td>
-                    <td>  <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
-                        <div class="icon"><i class="ri-add-circle-fill"></i></div>
-                    </button>
-                 
-                          <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">Disabled Backdrop</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
-                            </div> 
-                          </td></td>
-                        <td></td>
+                    <td><img src="{{ asset('assets/' . $spesialis->img_spesialis) }}" alt="{{ $spesialis->nama_spesialis }}" width="50"></td>
+                      <td>
+                        
+                            <!-- <a href="#delete{{ $spesialis->id_spesialis }}" class="btn btn-danger btn-sm " data-bs-toggle="modal">
+                                <i class="bi bi-trash-fill"></i>
+                            </a> -->
+                            <a href="{{ route('listmahasiswa', ['spesialis_id' => $spesialis->id_spesialis]) }}" class="btn btn-info btn-sm">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
                     
-                  </tr>
-                  @endforeach
-                  <tr>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
-          </div>
+                   
+                    </td> 
+                </tr>
+            @endforeach
+            </tbody>
+          </table>
+          <!-- End Table with stripped rows -->
 
         </div>
       </div>
-    </section>
 
-  </main><!-- End #main -->
+    </div>
+  </div>
+</section>
+
+</main><!-- End #main -->
 
   @extends('layouts.footer')
 

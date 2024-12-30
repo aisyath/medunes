@@ -122,43 +122,43 @@ class DokterController extends Controller
 
 	// }
     
-    // public function update(Request $request, $id)
-    // {
-    //     $dokter = Dokter::where('id_dokter', $id)->first();
+    public function update(Request $request, $id)
+    {
+        $dokter = Dokter::where('id_dokter', $id)->first();
 
-    //     $request->validate([
-    //         'id' => 'required|integer',
-    //         'spesialis_id' => 'required|integer',
-    //         'img_dokter' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    //         'alamat' => 'required|string|max:255',
-    //         'no_tlp' => 'required|string|max:15',
-    //         'nim' => 'required|string|max:20',
-    //         'jenis_kelamin' => 'required|in:L,P',
-    //         'status' => 'required|in:Pending,Approve,Reject,Suspend',
-    //     ]);
+        $request->validate([
+            'id' => 'required|integer',
+            'spesialis_id' => 'required|integer',
+            'img_dokter' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'alamat' => 'required|string|max:255',
+            'no_tlp' => 'required|string|max:15',
+            'nim' => 'required|string|max:20',
+            'jenis_kelamin' => 'required|in:L,P',
+            'status' => 'required|in:Pending,Approve,Reject,Suspend',
+        ]);
 
-    //     // Periksa apakah ada file gambar yang diunggah
-    //     if ($request->hasFile('img_dokter')) {
-    //         $image = $request->file('img_dokter');
-    //         $image->storeAs('public/asset', $image->hashName());
-    //         $dokter->img_dokter = 'asset/' . $image->hashName();
-    //     }
+        // Periksa apakah ada file gambar yang diunggah
+        if ($request->hasFile('img_dokter')) {
+            $image = $request->file('img_dokter');
+            $image->storeAs('public/asset', $image->hashName());
+            $dokter->img_dokter = 'asset/' . $image->hashName();
+        }
 
-    //     // Update data lainnya
-    //     // Update data lainnya
-    //     // $dokter->id_dokter = $request->id_dokter;
-    //     // $dokter->name = $request->nama_dokter;
-    //     $dokter->spesialis_id = $request->spesialis_id;
-    //     $dokter->alamat = $request->alamat;
-    //     $dokter->no_tlp = $request->no_tlp;
-    //     $dokter->nim = $request->nim;
-    //     $dokter->jenis_kelamin = $request->jenis_kelamin;
-    //     $dokter->status = $request->status;
-    //     $dokter->save();
-    //     // return redirect()->back()->with('success', 'Rating successfully submitted.');
-    //     return redirect()->back()->with('success', 'dokter berhasil diupdate!');
-    //     // return redirect()->route('listdokter')->with('message', 'dokter berhasil diupdate!');
-    // }
+        // Update data lainnya
+        // Update data lainnya
+        // $dokter->id_dokter = $request->id_dokter;
+        // $dokter->name = $request->nama_dokter;
+        $dokter->spesialis_id = $request->spesialis_id;
+        $dokter->alamat = $request->alamat;
+        $dokter->no_tlp = $request->no_tlp;
+        $dokter->nim = $request->nim;
+        $dokter->jenis_kelamin = $request->jenis_kelamin;
+        $dokter->status = $request->status;
+        $dokter->save();
+        // return redirect()->back()->with('success', 'Rating successfully submitted.');
+        return redirect()->back()->with('success', 'dokter berhasil diupdate!');
+        // return redirect()->route('listdokter')->with('message', 'dokter berhasil diupdate!');
+    }
 
 
     // public function show($id)
@@ -169,66 +169,66 @@ class DokterController extends Controller
     //     return view('backendadmin.dokter.show', compact('dokter'));
     // }
 
-    // public function destroy($id)
-    // {
+    public function destroy($id)
+    {
 
-    //     $konsultasiid=Konsultasi::where('dokter_id', $id)->get();
-    //     if ($konsultasiid==null) {
-    //         Dokter::destroy($id);
-    //         return redirect('/list_dokter')->with('message_delete', 'dokter berhasil dihapus!');
-    //     }
-    //     // Diskusi::where('konsultasi_id', $konsultasiid->id_konsultasi)->delete();
-    //     // // Catatan::where('konsultasi_id', $konsultasiid->id_konsultasi)->delete();
-    //     // Janji::where('dokter_id', $id)->delete();
-    //     // Konsultasi::where('dokter_id', $id)->delete();
+        $konsultasiid=Konsultasi::where('dokter_id', $id)->get();
+        if ($konsultasiid==null) {
+            Dokter::destroy($id);
+            return redirect('/list_dokter')->with('message_delete', 'dokter berhasil dihapus!');
+        }
+        // Diskusi::where('konsultasi_id', $konsultasiid->id_konsultasi)->delete();
+        // // Catatan::where('konsultasi_id', $konsultasiid->id_konsultasi)->delete();
+        // Janji::where('dokter_id', $id)->delete();
+        // Konsultasi::where('dokter_id', $id)->delete();
         
-    //     return redirect('/list_dokter')->with('message_delete', 'dokter gagal dihapus!');
-    // }
+        return redirect('/list_dokter')->with('message_delete', 'dokter gagal dihapus!');
+    }
 
-    // public function getHistory($id)
-    // {
-    //     $dokter = Dokter::with('user', 'konsultasi.pasien.user')->where('id', $id)->first();
+    public function getHistory($id)
+    {
+        $dokter = Dokter::with('user', 'konsultasi.pasien.user')->where('id', $id)->first();
 
-    //     return view('backendadmin.dokter.history_dokter', compact('dokter'));
-    // }
+        return view('backendadmin.dokter.history_dokter', compact('dokter'));
+    }
 
-    // public function showRatingForm($id)
-    // {
-    //     $dokter = Dokter::with('user')->where('id', $id)->first();
-    //     $rating = Rating::where('dokter_id', $id)->latest()->first();
-    //     // $rating = Rating::where('dokter_id', $id)->get();
+    public function showRatingForm($id)
+    {
+        $dokter = Dokter::with('user')->where('id', $id)->first();
+        $rating = Rating::where('dokter_id', $id)->latest()->first();
+        // $rating = Rating::where('dokter_id', $id)->get();
 
-    //     return view('backendadmin.dokter.rating_dokter', compact('dokter', 'rating'));
-    // }
+        return view('backendadmin.dokter.rating_dokter', compact('dokter', 'rating'));
+    }
 
 
 
-    // public function storeRating(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'profesionalisme' => 'required|numeric|min:1|max:5',
-    //         'konten' => 'required|numeric|min:1|max:5',
-    //         'komunikasi' => 'required|numeric|min:1|max:5',
-    //         'rating' => 'required|numeric|min:1|max:5',
-    //         'feedback' => 'required|string',
-    //     ]);
+    public function storeRating(Request $request, $id)
+    {
+        $request->validate([
+            'profesionalisme' => 'required|numeric|min:1|max:5',
+            'konten' => 'required|numeric|min:1|max:5',
+            'komunikasi' => 'required|numeric|min:1|max:5',
+            'rating' => 'required|numeric|min:1|max:5',
+            'feedback' => 'required|string',
+        ]);
 
-    //     // Process and store the rating data
-    //     $dokter = Dokter::with('user')->where('id', $id)->first();
+        // Process and store the rating data
+        $dokter = Dokter::with('user')->where('id', $id)->first();
 
-    //     $rating = new Rating();
-    //     $rating->profesionalisme = $request->input('profesionalisme');
-    //     $rating->konten = $request->input('konten');
-    //     $rating->komunikasi = $request->input('komunikasi');
-    //     $rating->rating = $request->input('rating');
-    //     $rating->feedback = $request->input('feedback');
-    //     $rating->dokter_id = $id; // Use the correct column name
-    //     $rating->save();
-    //     $rating->load('dokter'); // Mengambil relasi dokter yang terhubung dengan rating
+        $rating = new Rating();
+        $rating->profesionalisme = $request->input('profesionalisme');
+        $rating->konten = $request->input('konten');
+        $rating->komunikasi = $request->input('komunikasi');
+        $rating->rating = $request->input('rating');
+        $rating->feedback = $request->input('feedback');
+        $rating->dokter_id = $id; // Use the correct column name
+        $rating->save();
+        $rating->load('dokter'); // Mengambil relasi dokter yang terhubung dengan rating
 
-    //     return redirect()->back()->with('success', 'Rating successfully submitted.')->with('rating', $rating);
+        return redirect()->back()->with('success', 'Rating successfully submitted.')->with('rating', $rating);
 
-    // }
+    }
 
     public function activities()
     {

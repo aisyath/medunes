@@ -38,11 +38,17 @@
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="logout">
-          <i class="bi bi-envelope"></i>
-          <span>Logout</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+  <a class="dropdown-item nav-link" href="{{ route('logout') }}" 
+     onclick="event.preventDefault();
+     document.getElementById('logout-form').submit();">
+    <i class="bi bi-box-arrow-left"></i> Logout
+  </a>
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+      @csrf
+  </form>
+</li>
+<!-- End Contact Page Nav -->
 
     
   </aside><!-- End Sidebar-->

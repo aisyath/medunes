@@ -32,25 +32,13 @@
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Jumlah Pemeriksaan <span>| Today</span></h5>
+                  <h5 class="card-title">Jumlah Pemeriksaan </h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="ri-health-book-fill"></i>
+                      <i class="ri-hospital-fill"></i>
                     </div>
                     <div class="ps-3">
                       <h6>{{ $konsultasis }}</h6>
@@ -68,10 +56,10 @@
             <div class="col-xl-6 col-md-6 mb-4">
                 <div class="card info-card">
                     <div class="card-body">
-                        <h5 class="card-title">Mahasiswa <span>| This Month</span></h5>
+                        <h5 class="card-title">Mahasiswa </h5>
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                              <i class="ri-group-2-fill"></i>
+                              <i class="ri-stethoscope-fill"></i>
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $dokters }}</h6>
@@ -86,7 +74,7 @@
             <div class="col-xl-6 col-md-6 mb-4">
               <div class="card info-card">
                   <div class="card-body">
-                      <h5 class="card-title">Total Pasien <span>| This Month</span></h5>
+                      <h5 class="card-title">Total Pasien </h5>
                       <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class="ri-group-fill"></i>
@@ -103,10 +91,10 @@
             <div class="col-xl-6 col-md-6 mb-4">
               <div class="card info-card">
                   <div class="card-body">
-                      <h5 class="card-title">Pemeriksaan Hari Ini <span>| This Month</span></h5>
+                      <h5 class="card-title">Pemeriksaan Hari Ini </h5>
                       <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                              <i class="ri-medicine-bottle-fill"></i>
+                              <i class="ri-first-aid-kit-fill"></i>
                           </div>
                           <div class="ps-3">
                               <h6>{{ $konsultasitoday }}</h6>
@@ -121,19 +109,6 @@
             <div class="col-xxl-4 col-xl-12">
 
               <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
 
                 <div class="card-body">
                   <h5 class="card-title">Jumlah Pemeriksaan <span>| This Year</span></h5>
@@ -181,13 +156,13 @@
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
+                          name: 'Today',
                           data: [31, 40, 28, 51, 42, 82, 56],
                         }, {
-                          name: 'Revenue',
+                          name: 'This Month',
                           data: [11, 32, 45, 32, 34, 52, 41]
                         }, {
-                          name: 'Customers',
+                          name: 'This Years',
                           data: [15, 11, 32, 18, 9, 24, 11]
                         }],
                         chart: {

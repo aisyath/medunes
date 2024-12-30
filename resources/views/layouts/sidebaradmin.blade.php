@@ -51,19 +51,19 @@
         </a>
       </li><!-- End Login Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="dokter">
-          <i class="bi bi-dash-circle"></i>
-          <span>Daftar Dokter</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Logout</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
+  <a class="dropdown-item nav-link" href="{{ route('logout') }}" 
+     onclick="event.preventDefault();
+     document.getElementById('logout-form').submit();">
+    <i class="bi bi-box-arrow-left"></i> Logout
+  </a>
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+      @csrf
+  </form>
+</li>
+<!-- End Blank Page Nav -->
 
     </ul>
 

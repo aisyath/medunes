@@ -1,8 +1,10 @@
 @extends('layouts.head')
 
+
+
 <body>
 
-
+@extends('layouts.header')
 @extends('layouts.sidebardosen')
 
   <main id="main" class="main">
@@ -17,6 +19,11 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    @if (session('success'))
+    <div class="alert alert-warning" role="alert">
+        {{ session('success') }}
+    </div>
+  @endif
 
     <section class="section">
       <div class="row">
@@ -25,8 +32,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Daftar Dokter</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
-
+              
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -38,18 +44,11 @@
                     <th>ID Spesialis</th>
                     <th>Status</th>
                     <th>Jumlah Konsultasi</th>
-                    {{-- <th ></th>
-                    <th ></th> --}}
-                    <th></th>
-                    <th></th>
+                    <th ></th>
+                    <th ></th> 
                     <th>Action</th>
                     <th></th>
                     <th></th>
-
-
-                    {{-- <th ></th>
-                    <th ></th> --}}
-                    
                   </tr>
                 </thead>
                 <tbody>
@@ -61,99 +60,220 @@
                     <td>{{ $dokter->status }}</td>
                     <td>{{ $dokter->konsultasi->count() }}</td>
                     <td>
-                               
-                                    <!-- Penilaian Modal -->
-                    <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#penilaianModal">
-                      <div class="icon"><i class="bi bi-pencil-square"></i></div>
+                               <!-- Modal Show Dokter by id-->
+                                <!-- Update Edit Dokter Modal -->
+                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#updateSpesialis{{ $dokter->id_dokter }}">
+                        <i class="bi bi-pencil-square"></i>
                     </button>
-                    <div class="modal fade" id="penilaianModal" tabindex="-1" data-bs-backdrop="false">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Penilaian</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="container p-3">
-                            <form>
-                              <div class="mb-3">
-                                <label for="profesionalisme" class="form-label">Profesionalisme</label>
-                                <input type="text" class="form-control" id="profesionalisme">
-                              </div>
-                              <div class="mb-3">
-                                <label for="konten" class="form-label">Konten</label>
-                                <input type="text" class="form-control" id="konten">
-                              </div>
-                              <div class="mb-3">
-                                <label for="komunikasi" class="form-label">Komunikasi</label>
-                                <input type="text" class="form-control" id="komunikasi">
-                              </div>
-                              <div class="mb-3">
-                                <label for="rating" class="form-label">Rating</label>
-                                <input type="number" class="form-control" id="rating">
-                              </div>
-                              <div class="mb-3">
-                                <label for="feedback" class="form-label">Feedback</label>
-                                <textarea class="form-control" id="feedback" style="height: 100px"></textarea>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <!-- Update Spesialisasi Dokter Modal -->
-                    <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#updateModal">
-                      <div class="icon"><i class="bi bi-eye-fill"></i></div>
-                    </button>
-                    <div class="modal fade" id="updateModal" tabindex="-1" data-bs-backdrop="false">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Update Spesialisasi Dokter</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="container p-3">
-                            <form>
-                              <div class="mb-3">
-                                <label for="spesialisasiId" class="form-label">Spesialisasi ID</label>
-                                <input type="text" class="form-control" id="spesialisasiId">
+    <!-- Update modal section -->
+    <div class="modal fade" id="updateSpesialis{{ $dokter->id_dokter }}" data-bs-backdrop="static" data-bs-keyboard="false" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-updateSpesialisLabel">Update Spesialisasi Dokter <strong>{{ $dokter->user->name }}</strong></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('dokter.updateSpesialis', $dokter->id_dokter) }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="spesialisID" class="form-label">Spesialis ID</label>
+                            <input type="number" id="v_id_spesialis" min="1" class="form-control @error('spesialis_id') is-invalid @enderror" name="spesialis_id" value="{{ $dokter->spesialis_id }}"/>
+
+                            @error('spesialis_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                    </td>
+                    <td >
+                    <!-- Tombol Eye -->
+                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" 
+                              data-bs-target="#detailModal{{ $dokter->id_dokter }}">
+                              <i class="bi bi-eye-fill"></i>
+                          </button>
+
+                          <!-- Modal Detail Dokter -->
+                          <div class="modal fade" id="detailModal{{ $dokter->id_dokter }}" tabindex="-1" 
+                              aria-labelledby="detailModalLabel{{ $dokter->id_dokter }}" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="detailModalLabel{{ $dokter->id_dokter }}">
+                                              Detail Dokter: <strong>{{ $dokter->user->name }}</strong>
+                                          </h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                          <div class="row mb-2">
+                                              <div class="col">ID Dokter</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->id_dokter }}</button></div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">Nama Dokter</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->user->name }}</button></div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">ID Spesialis</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->spesialis_id }}</button></div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">Foto Dokter</div>
+                                              <div class="col">
+                                                  <img src="{{ asset('storage/asset/' . $dokter->img_dokter) }}" alt="Foto Dokter" width="100">
+                                              </div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">Alamat</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->alamat }}</button></div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">No. Telepon</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->no_tlp }}</button></div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">Jenis Kelamin</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->jenis_kelamin }}</button></div>
+                                          </div>
+                                          <div class="row mb-2">
+                                              <div class="col">Status</div>
+                                              <div class="col"><button class="btn btn-outline-info btn-sm">{{ $dokter->status }}</button></div>
+                                          </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                      </div>
+                                  </div>
                               </div>
-                            </form>
                           </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </td>
+                    <td>
 
-                    <!-- History Chat Modal -->
-                    <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#historyModal">
-                      <div class="icon"><i class="bi bi-trash-fill"></i></div>
-                    </button>
-                    <div class="modal fade" id="historyModal" tabindex="-1" data-bs-backdrop="false">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">History Chat</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <p>Non omnis incidunt qui sed occaecati magni asperiores est mollitia...</p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
+                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#history{{ $dokter->id_dokter }}">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                        <div class="modal fade" id="history{{ $dokter->id_dokter }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">History Chat <strong>{{ $dokter->user->name }}</strong> dengan Pasien</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-header">
+                                      <h4 class="modal-title fs-5" id="exampleModalLabel">Jumlah Konsultasi <strong class="fs-4">{{ $dokter->konsultasi->count() }}</strong></h4>
+                                  </div>
+                                  <div class="modal-body">
+                                      @foreach ($dokter->konsultasi as $k)
+                                                  <div class="row pt-3">
+                                                      <div class="col">
+                                                      <p>ID Pasien</p>
+                                                      </div>
+                                                      <div class="col" id="s_id">
+                                                      <button class="btn btn-outline-danger" data-mdb-ripple-color="dark">{{ $k->pasien->user->name }}</button>
+                                                      </div>
+                                                  </div> 
+                                          <div class="row">
+                                              <div class="col">
+                                              <p>ID Konsultasi</p>
+                                              </div>
+                                              <div class="col">
+                                              <button class="btn btn-outline-info" data-mdb-ripple-color="dark">{{ $k->id_konsultasi }}</button>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col">
+                                              <p>Konsultasi Pasien</p>
+                                              </div>
+                                              <div class="col">
+                                              <button class="btn btn-outline-info" data-mdb-ripple-color="dark">{{ $k->topik }}</button>
+                                              </div>
+                                          </div>
+                                      @endforeach
+                                          
+
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                          </div>
+                                  </div>
+                              </div>
+                          </div>
+                                    
+                    </td>
+                    <td>
+                        <!-- Penilaian Modal -->
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#penilaianModal{{ $dokter->id_dokter }}">
+    <i class="bi bi-graph-up"></i>
+</button>
+
+<div class="modal fade" id="penilaianModal{{ $dokter->id_dokter }}" tabindex="-1" data-bs-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Penilaian</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="container p-3">
+        <form action="{{ route('dokter.addRating', $dokter->id_dokter) }}" method="POST">
+          @csrf
+          <div class="mb-3">
+            <label for="profesionalisme" class="form-label">Profesionalisme</label>
+            <input type="number" class="form-control" id="profesionalisme" name="profesionalisme" required>
+          </div>
+          <div class="mb-3">
+            <label for="konten" class="form-label">Konten</label>
+            <input type="number" class="form-control" id="konten" name="konten" required>
+          </div>
+          <div class="mb-3">
+            <label for="komunikasi" class="form-label">Komunikasi</label>
+            <input type="number" class="form-control" id="komunikasi" name="komunikasi" required>
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="form-label">Rating</label>
+            <input type="number" class="form-control" id="rating" name="rating" required>
+          </div>
+          <div class="mb-3">
+            <label for="feedback" class="form-label">Feedback</label>
+            <textarea class="form-control" id="feedback" name="feedback" style="height: 100px" required></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+        @if ($dokter->rating->count() > 0)
+          <h6 class="card-subtitle mb-2 text-muted">Riwayat Penilaian:</h6>
+          <ul class="list-group">
+            @foreach ($dokter->rating as $r)
+              <li class="list-group-item">
+                <p>ID: {{ $r->id_rating }}</p>
+                <p>Profesionalisme: {{ $r->profesionalisme }}</p>
+                <p>Konten: {{ $r->konten }}</p>
+                <p>Komunikasi: {{ $r->komunikasi }}</p>
+                <p>Global Rating: {{ $r->rating }}</p>
+                <p>Feedback: {{ $r->feedback }}</p>
+              </li>
+            @endforeach
+          </ul>
+        @else
+          <p class="card-text">Belum ada riwayat rating.</p>
+        @endif
+      </div>
+    </div>
+  </div>
+</div>
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>

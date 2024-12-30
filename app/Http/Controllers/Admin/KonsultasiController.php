@@ -36,7 +36,7 @@ class KonsultasiController extends Controller
     public function destroy(int $id)
     {
         Konsultasi::destroy($id);
-        return redirect('/list_konsultasi')->with('message_delete', 'Konsultasi berhasil dihapus!');
+        return redirect('/konsultasipasien')->with('success', 'Konsultasi berhasil dihapus!');
     }
 
     // public function cetak_pdf()

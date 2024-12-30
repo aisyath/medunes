@@ -142,7 +142,7 @@ class MahasiswaController extends Controller
         $dokter->status = $request->status;
         $dokter->save();
 
-        return redirect()->route('listdokter')->with('message', 'dokter berhasil diupdate!');
+        return redirect()->route('listdokter')->with('success', 'dokter berhasil diupdate!');
     }
 
 
@@ -157,7 +157,7 @@ class MahasiswaController extends Controller
     public function destroy($id)
     {
         Dokter::destroy($id);
-        return redirect('/list_mahasiswa')->with('message_delete', 'dokter berhasil dihapus!');
+        return redirect('/list_mahasiswa')->with('success', 'dokter berhasil dihapus!');
     }
 
     public function getHistory($id)

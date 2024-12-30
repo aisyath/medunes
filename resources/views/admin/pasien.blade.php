@@ -9,7 +9,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Daftar Dokter Spesialis</h1>
+      <h1>Daftar Pasien</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -18,6 +18,11 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    @if (session('success'))
+    <div class="alert alert-warning" role="alert">
+        {{ session('success') }}
+    </div>
+  @endif
 
     <section class="section">
       <div class="row">
@@ -25,16 +30,13 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Daftar Dokter</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
-
+              <h5 class="card-title">Daftar Pasien</h5>
+              
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th>
-                      <b>ID</b>
-                    </th>
+                    <th><b>ID</b></th>
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
@@ -44,8 +46,6 @@
                     <th>BB</th>
                     <th>Status</th>
                     <th>Action</th>
-                    <th></th>
-                    
                   </tr>
                 </thead>
                 <tbody>
@@ -61,32 +61,45 @@
                     <td>{{ $pasien->BB }}</td>
                     <td><span>{{ $pasien->status }}</span></td>
                     <td>
-                               
-                        <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
-                          <div class="icon"><i class="ri-add-circle-fill"></i></div>
+                      <button type="button" class="btn btn-primary" style="font-size: 12px;" data-bs-toggle="modal" data-bs-target="#update{{ $pasien->id_pasien }}">
+                        <div class="icon"><i class="ri-edit-2-fill"></i></div>
                       </button>
-                   
-                            <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title">Disabled Backdrop</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Non omnis incidunt qui sed occaecati magni asperiores est mollitia. Soluta at et reprehenderit. Placeat autem numquam et fuga numquam. Tempora in facere consequatur sit dolor ipsum. Consequatur nemo amet incidunt est facilis. Dolorem neque recusandae quo sit molestias sint dignissimos.
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                  </div>
+
+                      <!-- Modal -->
+                      <div class="modal fade" id="update{{ $pasien->id_pasien }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Status Pasien <strong>{{ $pasien->user->name }}</strong></h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="{{ route('pasien.update', $pasien->id_pasien) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                  <label for="statuspasien" class="form-label">Status</label>
+                                  <select class="form-select" id="statuspasien" name="status" aria-label="Default select example">
+                                      <option selected>{{ $pasien->status }}</option>
+                                      <option value="active">Active</option>
+                                      <option value="suspend">Suspend</option>
+                                  </select>
+                                  @error('status')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                                  @enderror
                                 </div>
-                              </div> 
-                            </td></td>
-                        </tr>
-                        <tr>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary">Simpan</button>
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                </div>
+                              </form>
+                            </div>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
-                  @endforeach
+                @endforeach
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
@@ -106,17 +119,17 @@
 
 @yield('script')
 <!-- Vendor JS Files -->
-<script src="assets/auth/vendor/apexcharts/apexcharts.min.js"></script>
-<script src="assets/auth/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/auth/vendor/chart.js/chart.umd.js"></script>
-<script src="assets/auth/vendor/echarts/echarts.min.js"></script>
-<script src="assets/auth/vendor/quill/quill.js"></script>
-<script src="assets/auth/vendor/simple-datatables/simple-datatables.js"></script>
-<script src="assets/auth/vendor/tinymce/tinymce.min.js"></script>
-<script src="assets/auth/vendor/php-email-form/validate.js"></script>
+<script src="{{ asset('assets/auth/vendor/apexcharts/apexcharts.min.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/chart.js/chart.umd.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/echarts/echarts.min.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/quill/quill.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/simple-datatables/simple-datatables.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('assets/auth/vendor/php-email-form/validate.js') }}"></script>
 
 <!-- Template Main JS File -->
-<script src="assets/auth/js/main.js"></script>
+<script src="{{ asset('assets/auth/js/main.js') }}"></script>
 
 </body>
 
